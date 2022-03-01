@@ -1,0 +1,16 @@
+enum PostStatus {
+  ACTIVE
+  INACTIVE
+}
+
+type Post 
+@model
+@auth(rules: [
+  { allow: owner, ownerField: "owner" },
+])
+{
+  id: ID! @primaryKey
+  title: String!
+  rating: Int!
+  status: PostStatus!
+}
